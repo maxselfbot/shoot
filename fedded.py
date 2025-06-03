@@ -451,12 +451,12 @@ async def autoreact(ctx, option: str):
     global auto_react_enabled
     if option.lower() == "on":
         auto_react_enabled = True
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Auto-reactions are now enabled.**")
+        await ctx.send("# **Auto-reactions are now enabled.**")
     elif option.lower() == "off":
         auto_react_enabled = False
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Auto-reactions are now disabled.**")
+        await ctx.send("# **Auto-reactions are now disabled.**")
     else:
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Invalid option. Use +autoreact on or +autoreact off.**")
+        await ctx.send("# **Invalid option. Use +autoreact on or +autoreact off.**")
 
 @bot.command()
 async def spam(ctx, amount: int, *, message: str):
@@ -469,7 +469,7 @@ async def afk(ctx, *, reason):
     await ctx.message.delete()
     global afk_reason
     afk_reason = reason
-    message = f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **I am now AFK with the reason: {reason}.**"
+    message = f"# **I am now AFK with the reason: {reason}.**"
     await ctx.send(message)
 
 @bot.command()
@@ -477,7 +477,7 @@ async def unafk(ctx):
     await ctx.message.delete()
     global afk_reason
     afk_reason = None
-    message = "# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **I am no longer AFK.**"
+    message = "# **I am no longer AFK.**"
     await ctx.send(message)
     
 @bot.command(aliases=['bal', 'ltcbal'])
@@ -501,7 +501,7 @@ async def getbal(ctx, ltcaddress):
     usd_balance = balance * usd_price
     usd_total_balance = total_balance * usd_price
     usd_unconfirmed_balance = unconfirmed_balance * usd_price
-    message = f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **LTC Address: `{ltcaddress}`**\n"
+    message = f"# **LTC Address: `{ltcaddress}`**\n"
     message += f"`🔏` Current LTC: **${usd_balance:.2f} USD**\n"
     message += f"`🔏` Total LTC Received: **${usd_total_balance:.2f} USD**\n"
     message += f"`🔏` Unconfirmed LTC: **${usd_unconfirmed_balance:.2f} USD**"
@@ -515,7 +515,7 @@ async def avatar(ctx, user: discord.User = None):
     member = user or ctx.author
 
     avatar_url = member.display_avatar.url
-    await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Here is the [avatar]({avatar_url}) of {member.mention} **")
+    await ctx.send(f"# **Here is the [avatar]({avatar_url}) of {member.mention} **")
 
 @bot.command(name='banner')
 async def fetch_user_banner(ctx, user: discord.User = None):
@@ -540,7 +540,7 @@ async def fetch_user_banner(ctx, user: discord.User = None):
             
             banner = f"https://cdn.discordapp.com/banners/{uid}/{receive}.{format}?size=1024"  # Adjust the size here
 
-    await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Here is the [banner]({banner}) of {member.mention} **")
+    await ctx.send(f"# **Here is the [banner]({banner}) of {member.mention} **")
 
 @bot.command()
 async def clear(ctx, amount: int):
@@ -597,7 +597,7 @@ async def vcjoin(ctx, channel_id: int, mute: str, deafen: str, camera: str):
     channel = ctx.guild.get_channel(channel_id)
 
     if channel is None or not isinstance(channel, discord.VoiceChannel):
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Invalid voice channel ID.**')
+        await ctx.send('# **Invalid voice channel ID.**')
         return
 
     # Join the voice channel
@@ -609,20 +609,20 @@ async def vcjoin(ctx, channel_id: int, mute: str, deafen: str, camera: str):
             self_deaf=deafen,
             self_video=camera
         )
-        await ctx.send(f'# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Joined voice channel `{channel.name}` with mute={mute}, deafen={deafen}, camera={camera}.**')
+        await ctx.send(f'# **Joined voice channel `{channel.name}` with mute={mute}, deafen={deafen}, camera={camera}.**')
     except discord.Forbidden:
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **I do not have permission to join this voice channel.**')
+        await ctx.send('# **I do not have permission to join this voice channel.**')
     except discord.ClientException:
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Already connected to a voice channel.**')
+        await ctx.send('# **Already connected to a voice channel.**')
     except Exception as e:
-        await ctx.send(f'# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **An error occurred: {e}**')
+        await ctx.send(f'# **An error occurred: {e}**')
 
 @bot.command()
 async def stream(ctx, *, text):
     await ctx.message.delete()
-    activity = discord.Streaming(name=text, url='https://www.twitch.tv/alex')
+    activity = discord.Streaming(name=text, url='https://www.twitch.tv/ishowspeed')
     await bot.change_presence(activity=activity)
-    await ctx.send(f'# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Status Updated to streaming**\n`🔏` **Text :** {text}')
+    await ctx.send(f'# **Status Updated to streaming**\n`🔏` **Text :** {text}')
 
 @bot.command()
 async def vcleave(ctx):
@@ -631,11 +631,11 @@ async def vcleave(ctx):
         voice_client = ctx.voice_client
         if voice_client:
             await voice_client.disconnect()
-            await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Successfully disconnected from VC.**")
+            await ctx.send("# **Successfully disconnected from VC.**")
         else:
-            await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **I'm not currently in a VC.**")
+            await ctx.send("# **I'm not currently in a VC.**")
     except Exception as e:
-        await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **An error occurred: {e}**")
+        await ctx.send(f"# **An error occurred: {e}**")
 
 @bot.command()
 async def deleteallchannels(ctx):
@@ -664,7 +664,7 @@ async def deleteallchannels(ctx):
         thread = threading.Thread(target=delete_channel, args=(channel_id,))
         thread.start()
 
-    await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **All channels are being deleted.**")
+    await ctx.send("# **All channels are being deleted.**")
 
 def delete_channel(channel_id):
     url = f"https://canary.discord.com/api/v9/channels/{channel_id}"
@@ -699,7 +699,7 @@ async def deleteallroles(ctx):
     server = ctx.guild
 
     if server is None:
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **The server does not exist.**")
+        await ctx.send("# **The server does not exist.**")
         return
 
     roles = server.roles
@@ -709,9 +709,9 @@ async def deleteallroles(ctx):
             try:
                 await role.delete(reason="Deleting all roles")
             except Exception as e:
-                print(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Failed to delete role {role.name}: {e}**")
+                print(f"# **Failed to delete role {role.name}: {e}**")
 
-    await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **All roles have been deleted successfully!**")
+    await ctx.send("# **All roles have been deleted successfully!**")
   
 @bot.command()
 async def clone_channels(ctx, old_server_id: int, new_server_id: int):
@@ -720,10 +720,10 @@ async def clone_channels(ctx, old_server_id: int, new_server_id: int):
     new_server = bot.get_guild(new_server_id)
 
     if not old_server:
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Old server not found.**')
+        await ctx.send('# **Old server not found.**')
         return
     if not new_server:
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **New server not found.**')
+        await ctx.send('# **New server not found.**')
         return
     category_map = {}
 
@@ -755,7 +755,7 @@ async def clone_channels(ctx, old_server_id: int, new_server_id: int):
         print(message)
 
     # Send one final message indicating channels are cloned
-    await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Channels cloned successfully!**")
+    await ctx.send("# **Channels cloned successfully!**")
 
 # 5. Clone Roles
 @bot.command()
@@ -765,11 +765,11 @@ async def clone_roles(ctx, old_server_id: int, new_server_id: int):
     new_server = bot.get_guild(new_server_id)
 
     if old_server is None:
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **The old server does not exist.**")
+        await ctx.send("# **The old server does not exist.**")
         return
 
     if new_server is None:
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **The new server does not exist.**")
+        await ctx.send("# **The new server does not exist.**")
         return
 
     old_roles = old_server.roles
@@ -796,7 +796,7 @@ async def clone_roles(ctx, old_server_id: int, new_server_id: int):
                     await new_member.add_roles(new_role)
 
     # Send one final message indicating roles are cloned
-    await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Roles have been cloned successfully!**")
+    await ctx.send("# **Roles have been cloned successfully!**")
 
     # Print all clone messages in console
     for message in clone_messages:
@@ -807,7 +807,7 @@ async def phcomment(ctx, user: discord.Member = None, *, args=None):
     await ctx.message.delete()
     
     if user is None or args is None:
-        await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Missing parameters.**")
+        await ctx.send("# **Missing parameters.**")
         return
     
     encoded_args = urllib.parse.quote(args)
@@ -852,9 +852,9 @@ async def math(ctx, *, expression):
     await ctx.message.delete()
     try:
         result = eval(expression)
-        await ctx.send(f'# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Result: `{result}`**')
+        await ctx.send(f'# **Result: `{result}`**')
     except:
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Invalid expression.**')
+        await ctx.send('# **Invalid expression.**')
  
 L = instaloader.Instaloader()
 
@@ -893,9 +893,9 @@ async def cat(ctx):
             cat_image_url = data[0]['url']
             await ctx.send(cat_image_url)
         else:
-            await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Could not retrieve a cat image.**')
+            await ctx.send('# **Could not retrieve a cat image.**')
     else:
-        await ctx.send('# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Failed to fetch cat image.**')
+        await ctx.send('# **Failed to fetch cat image.**')
 
 def extract_promo_code(promo_link):
     return promo_link.split('/')[-1]
@@ -913,7 +913,7 @@ async def checkpromo(ctx, promo_link: str):
 
                 # Check if the promo is already claimed
                 if data["uses"] == data["max_uses"]:
-                    await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Code :** `{promo_code}`\n`🔏` **Valid :** No")
+                    await ctx.send(f"# **Code :** `{promo_code}`\n`🔏` **Valid :** No")
                 else:
                     # Extract expiration and other details
                     try:
@@ -929,7 +929,7 @@ async def checkpromo(ctx, promo_link: str):
                         duration = "Unknown"
 
                     # Send the result
-                    await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n"
+                    await ctx.send(f"# 🎈 max selfbot\n"
                                    f"`🔏` **Code :** `{promo_code}`\n"
                                    f"`🔏` **Valid :** Yes\n"
                                    f"`🔏` **Expires in :** {days_left} days\n")
@@ -937,7 +937,7 @@ async def checkpromo(ctx, promo_link: str):
                 retry_after = response.headers.get("retry-after", 2)
                 await ctx.send(f"Rate limited for {retry_after} seconds, please try again later.")
             else:
-                await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Code :** `{promo_code}`\n`🔏` **Valid :** No")
+                await ctx.send(f"# **Code :** `{promo_code}`\n`🔏` **Valid :** No")
 
 @bot.command()
 async def rizz(ctx, user: discord.User):
@@ -977,7 +977,7 @@ async def closealldms(ctx):
         thread = threading.Thread(target=close_dm, args=(channel_id,))
         thread.start()
 
-    await ctx.send("# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **All DMs are being closed.**")
+    await ctx.send("# **All DMs are being closed.**")
 
 def close_dm(channel_id):
     # URL for closing the DM channel
@@ -1034,7 +1034,7 @@ async def delfriends(ctx):
         time.sleep(2)  # Adding a short delay between each check
 
     total_friends = len(friend_ids)
-    await ctx.send(f"# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **All Friends Have Been Removed**")
+    await ctx.send(f"# **All Friends Have Been Removed**")
 
 @bot.command()
 async def roast(ctx):
@@ -1135,7 +1135,7 @@ def get_token_info(token):
 
         # Return all the information in plain text format
         return (
-            f"# 🎈 __Fedded Selfbot__ 🎈\n`👤` **Username**: {user_name}\n"
+            f"# 🎈 max selfbot\n`👤` **Username**: {user_name}\n"
             f"`🆔` **User ID**: {user_id}\n"
             f"`📅` **Creation Date**: {creation_date}\n"
             f"`📱` **Phone Number**: {phone_number}\n"
