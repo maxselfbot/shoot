@@ -620,7 +620,7 @@ async def vcjoin(ctx, channel_id: int, mute: str, deafen: str, camera: str):
 @bot.command()
 async def stream(ctx, *, text):
     await ctx.message.delete()
-    activity = discord.Streaming(name=text, url='https://www.twitch.tv/devilharisyt')
+    activity = discord.Streaming(name=text, url='https://www.twitch.tv/alex')
     await bot.change_presence(activity=activity)
     await ctx.send(f'# 🎈 __Fedded Selfbot__ 🎈\n`🔏` **Status Updated to streaming**\n`🔏` **Text :** {text}')
 
