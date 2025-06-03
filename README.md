@@ -1,14 +1,14 @@
-# FEDDED - A Discord Selfbot
+# SHOOT - A Discord Selfbot
 
 ### This Selfbot has a total of about 25+ commands to make your life on discord easier. It has a nice and intuitive interface to make it easy to use for everyone, help and explanations for each command, a very complete help command.
 
 ## Discord Servers
-- https://discord.com/invite/nCyKKRAC9u (Support Server)
+- https://discord.com/invite/shootem (Support Server)
 
 ## Disclaimer
 
 - SelfBot was made for Educational purposes.
-- This selfbot is made for Nitro users so if you want emojis in Help message join this [server](https://discord.com/invite/W6JfvA4y66)
+- This selfbot is made for Nitro users so if you want emojis in Help message join this [server](https://discord.com/invite/shootem)
 __________________________________________________
 - By using this SelfBot, you agree that you hold responsibility and accountability of any consequences caused by your actions.
 
@@ -39,4 +39,4 @@ If you get error after entering the command: 'pip install -r requirements.txt' i
 
 ### TYPE &help ON DISCORD TO SEE FEATURES OF YOU BOT...
 
-# This Project Is Made By: Harry Uchiha.
+# This Project Is Made By: shoots
